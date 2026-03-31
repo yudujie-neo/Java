@@ -1,0 +1,7 @@
+#### GET request to example server
+#GET https://examples.http-client.intellij.net/get
+#    ?generated-in=IntelliJ IDEA
+
+### 测试接口
+GET http://localhost:8080/depts
+Content-Type: application/json
