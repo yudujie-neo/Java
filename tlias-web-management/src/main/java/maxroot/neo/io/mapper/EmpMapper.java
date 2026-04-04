@@ -1,6 +1,7 @@
 package maxroot.neo.io.mapper;
 
 import maxroot.neo.io.pojo.Emp;
+import maxroot.neo.io.pojo.EmpQueryParam;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -28,6 +29,6 @@ public interface EmpMapper {
 */
 
     // @Select("select e.*, d.name deptName from emp as e left join dept as d on e.dept_id = d.id order by e.update_time desc ")
-      public List<Emp> list(String name, Integer gender, LocalDate begin, LocalDate end);
+      public List<Emp> list(EmpQueryParam empQueryParam);
 
 }

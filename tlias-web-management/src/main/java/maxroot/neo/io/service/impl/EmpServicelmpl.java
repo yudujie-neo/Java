@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import maxroot.neo.io.mapper.EmpMapper;
 import maxroot.neo.io.pojo.Emp;
+import maxroot.neo.io.pojo.EmpQueryParam;
 import maxroot.neo.io.pojo.PageResult;
 import maxroot.neo.io.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +36,12 @@ public class EmpServicelmpl implements EmpService {
 
  */
 @Override
-public PageResult page(Integer page, Integer pageSize, String name, Integer gender, LocalDate begin, LocalDate end) {
+public PageResult page(EmpQueryParam empQueryParam) {
     //1. 设置分页参数
-    PageHelper.startPage(page,pageSize);
+    PageHelper.startPage(empQueryParam.getPage(),empQueryParam.getPageSize());
 
     //2. 执行查询
-    List<Emp> empList = empMapper.list(name, gender,begin, end);
+    List<Emp> empList = empMapper.list(empQueryParam);
     Page<Emp> p = (Page<Emp>) empList;
 
     //3. 封装结果

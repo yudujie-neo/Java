@@ -1,9 +1,7 @@
 package maxroot.neo.io.controller;
 
 
-import maxroot.neo.io.pojo.Emp;
-import maxroot.neo.io.pojo.PageResult;
-import maxroot.neo.io.pojo.Result;
+import maxroot.neo.io.pojo.*;
 import maxroot.neo.io.service.EmpService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,12 +23,8 @@ public class EmpController {
     }
 
     @GetMapping
-    public Result page(@RequestParam(defaultValue = "1")Integer page,
-                       @RequestParam(defaultValue = "10")Integer pageSize,
-                       String name, Integer gender,
-                       @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
-                       @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end){
-        PageResult<Emp> pageResult = empService.page(page,pageSize,name,gender,begin,end);
+    public Result page(EmpQueryParam empQueryParam) {
+        PageResult<Emp> pageResult = empService.page(empQueryParam);
         return Result.success(pageResult);
 
     }
