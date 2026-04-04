@@ -9,3 +9,7 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/emps?page=1&pageSize=5
 Content-Type: application/json
+
+###
+GET http://localhost:8080/emps?page=1&pageSize=5&name=阮&gender=1&begin=2010-01-01&end=2020-01-01
+Content-Type: application/json

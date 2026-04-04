@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 
-public class DeptServiceimpl implements maxroot.neo.io.service.DeptService
+public class DeptServicelmpl implements maxroot.neo.io.service.DeptService
 {
 
     @Autowired
