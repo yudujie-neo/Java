@@ -1,5 +1,7 @@
 package maxroot.neo.io.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import maxroot.neo.io.mapper.EmpMapper;
 import maxroot.neo.io.pojo.Emp;
 import maxroot.neo.io.pojo.PageResult;
@@ -14,7 +16,7 @@ public class EmpServiceimpl implements EmpService {
 
     @Autowired
     private EmpMapper empMapper;
-
+/*
     @Override
     public PageResult page(Integer page, Integer pageSize) {
 
@@ -29,4 +31,19 @@ public class EmpServiceimpl implements EmpService {
         return new PageResult<Emp>(total, empList);
 
     }
+
+ */
+@Override
+public PageResult page(Integer page, Integer pageSize) {
+    //1. 设置分页参数
+    PageHelper.startPage(page,pageSize);
+
+    //2. 执行查询
+    List<Emp> empList = empMapper.list();
+    Page<Emp> p = (Page<Emp>) empList;
+
+    //3. 封装结果
+    return new PageResult(p.getTotal(), p.getResult());
+}
+
 }
