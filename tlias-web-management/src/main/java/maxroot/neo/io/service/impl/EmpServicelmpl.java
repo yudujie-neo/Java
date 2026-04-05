@@ -42,18 +42,20 @@ public class EmpServicelmpl implements EmpService {
     }
 
  */
-@Override
-public PageResult page(EmpQueryParam empQueryParam) {
-    //1. 设置分页参数
-    PageHelper.startPage(empQueryParam.getPage(),empQueryParam.getPageSize());
+    @Override
+    public PageResult page(EmpQueryParam empQueryParam) {
+        //1. 设置分页参数
+        PageHelper.startPage(empQueryParam.getPage(),empQueryParam.getPageSize());
 
-    //2. 执行查询
-    List<Emp> empList = empMapper.list(empQueryParam);
-    Page<Emp> p = (Page<Emp>) empList;
+        //2. 执行查询
+        List<Emp> empList = empMapper.list(empQueryParam);
+        Page<Emp> p = (Page<Emp>) empList;
 
-    //3. 封装结果
-    return new PageResult(p.getTotal(), p.getResult());
-}
+        //3. 封装结果
+        return new PageResult(p.getTotal(), p.getResult());
+    }
+
+
     @Transactional
     @Override
     public void save(Emp emp) {
@@ -73,4 +75,13 @@ public PageResult page(EmpQueryParam empQueryParam) {
         }
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void deleteByIds(List<Integer> ids) {
+        //1. 根据ID批量删除员工基本信息
+        empMapper.deleteByIds(ids);
+
+        //2. 根据员工的ID批量删除员工的工作经历信息
+        empExprMapper.deleteByEmpIds(ids);
+    }
 }

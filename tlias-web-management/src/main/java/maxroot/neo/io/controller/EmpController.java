@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import maxroot.neo.io.pojo.Emp;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -25,6 +26,8 @@ public class EmpController {
         PageResult<Emp> pageResult = empService.page(empQueryParam);
         return Result.success(pageResult);
     }
+
+
     @PostMapping
     public Result save(@RequestBody Emp emp){
         log.info("请求参数emp: {}", emp);
@@ -32,4 +35,11 @@ public class EmpController {
         return Result.success();
     }
 
+
+    @DeleteMapping
+    public Result delete(@RequestParam List<Integer> ids){
+        log.info("批量删除部门: ids={} ", ids);
+        empService.deleteByIds(ids);
+        return Result.success();
+    }
 }

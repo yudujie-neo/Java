@@ -37,3 +37,6 @@ Content-Type: application/json
     }
   ]
 }
+
+### 删除员工
+DELETE http://localhost:8080/emps?ids=1,2,3
