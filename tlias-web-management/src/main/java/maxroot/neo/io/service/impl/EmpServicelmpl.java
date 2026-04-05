@@ -11,6 +11,7 @@ import maxroot.neo.io.pojo.PageResult;
 import maxroot.neo.io.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDate;
@@ -53,7 +54,7 @@ public PageResult page(EmpQueryParam empQueryParam) {
     //3. 封装结果
     return new PageResult(p.getTotal(), p.getResult());
 }
-
+    @Transactional
     @Override
     public void save(Emp emp) {
         //1.补全基础属性
