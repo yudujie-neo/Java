@@ -4,10 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import maxroot.neo.io.mapper.EmpExprMapper;
 import maxroot.neo.io.mapper.EmpMapper;
-import maxroot.neo.io.pojo.Emp;
-import maxroot.neo.io.pojo.EmpExpr;
-import maxroot.neo.io.pojo.EmpQueryParam;
-import maxroot.neo.io.pojo.PageResult;
+import maxroot.neo.io.pojo.*;
 import maxroot.neo.io.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -83,5 +80,15 @@ public class EmpServicelmpl implements EmpService {
 
         //2. 根据员工的ID批量删除员工的工作经历信息
         empExprMapper.deleteByEmpIds(ids);
+    }
+
+    @Override
+    public LoginInfo login(Emp emp) {
+        Emp empLogin = empMapper.getUsernameAndPassword(emp);
+        if(empLogin != null){
+            LoginInfo loginInfo = new LoginInfo(empLogin.getId(), empLogin.getUsername(), empLogin.getName(), null);
+            return loginInfo;
+        }
+        return null;
     }
 }

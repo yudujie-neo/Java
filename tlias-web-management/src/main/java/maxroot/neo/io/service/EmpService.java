@@ -2,6 +2,7 @@ package maxroot.neo.io.service;
 
 import maxroot.neo.io.pojo.Emp;
 import maxroot.neo.io.pojo.EmpQueryParam;
+import maxroot.neo.io.pojo.LoginInfo;
 import maxroot.neo.io.pojo.PageResult;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -15,4 +16,6 @@ public interface EmpService {
     void save(Emp emp);
 
     void deleteByIds(List<Integer> ids);
+
+    LoginInfo login(Emp emp);
 }

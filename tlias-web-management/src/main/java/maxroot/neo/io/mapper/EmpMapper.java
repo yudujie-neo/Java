@@ -40,4 +40,10 @@ public interface EmpMapper {
     void insert(Emp emp);
 
     void deleteByIds(List<Integer> ids);
+
+    /**
+     * 根据用户名和密码查询员工信息
+     */
+    @Select("select * from emp where username = #{username} and password = #{password}")
+    Emp getUsernameAndPassword(Emp emp);
 }
