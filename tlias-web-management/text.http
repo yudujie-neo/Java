@@ -49,3 +49,8 @@ Content-Type: application/json
   "username": "zhangsan",
   "password": "123456"
 }
+
+### 测试login路径以外的是否被 Interceptor 拦截
+GET http://localhost:8080/emps
+token:eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MzcsInVzZXJuYW1lIjoiemhhbmdzYW4iLCJleHAiOjE3NzU2NTI5MTZ9.Dvq_yS1mdb2wdoNJZ3bOLoo4zBYR1TAD_HNarm5VHUc
+Accept:application/json
