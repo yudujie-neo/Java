@@ -52,5 +52,5 @@ Content-Type: application/json
 
 ### 测试login路径以外的是否被 Interceptor 拦截
 GET http://localhost:8080/emps
-token:eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MzcsInVzZXJuYW1lIjoiemhhbmdzYW4iLCJleHAiOjE3NzU2NTI5MTZ9.Dvq_yS1mdb2wdoNJZ3bOLoo4zBYR1TAD_HNarm5VHUc
+token:eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MzcsInVzZXJuYW1lIjoiemhhbmdzYW4iLCJleHAiOjE3NzU3Nzg3NDZ9.NuntCAs7EL_c9mJUmQEZ0CZEqL3QKRvKwEGI0ZIpfLA
 Accept:application/json
