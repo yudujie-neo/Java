@@ -39,7 +39,9 @@ Content-Type: application/json
 }
 
 ### 删除员工
-DELETE http://localhost:8080/emps?ids=1,2,3
+DELETE http://localhost:8080/emps?ids=41
+Content-Type: application/json
+token:eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MzcsInVzZXJuYW1lIjoiemhhbmdzYW4iLCJleHAiOjE3NzU5MjM4MTF9.8n78pIBzrU3wOFUj6xGxAMfIzxmXZsh4t39GFg3rdBM
 
 ### 测试登录接口
 POST http://localhost:8080/login

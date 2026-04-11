@@ -2,6 +2,7 @@ package maxroot.neo.io.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
+import maxroot.neo.io.anno.Log;
 import maxroot.neo.io.pojo.*;
 import maxroot.neo.io.service.EmpService;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,12 +16,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/emps")
 public class EmpController {
-    private final EmpService empService;
 
+    private final EmpService empService;
     public EmpController(EmpService empService) {
         this.empService = empService;
     }
 
+    @Log
     @GetMapping
     public Result page(EmpQueryParam empQueryParam) {
         PageResult<Emp> pageResult = empService.page(empQueryParam);
@@ -35,7 +37,7 @@ public class EmpController {
         return Result.success();
     }
 
-
+    @Log
     @DeleteMapping
     public Result delete(@RequestParam List<Integer> ids){
         log.info("批量删除部门: ids={} ", ids);
